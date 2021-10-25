@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Análise comparativa</title>
+    <style>
+
+        * {
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    body{
+        background: url(https://wallpaperaccess.com/full/6302899.jpg) center center no-repeat fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    .header{
+        height: 100px;
+        background: rgb(38, 33, 46);
+    }
+
+    .container{
+        height: 100%;
+        width: 80%;
+        margin: auto;
+    }
+
+    .header .container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header .container img {
+        margin-top: 0px;
+        height: 85px;
+        width: 119px;
+    }
+
+    .header .container #titleHeader{
+        color: rgb(246, 152, 0);
+        font-size: 50px;
+        justify-content: left;
+        padding-right: 900px;
+        
+    }
+
+    .grafico{
+        background-color: lightgrey;
+        width: 45%;
+        height: 35vh;
+        margin: 10px;
+        padding: 5px;
+    }
+
+    .footer{
+    background-color: rgb(255, 166, 115);
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .altura{
+    height: 100px;
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="logo"><img src="https://play-lh.googleusercontent.com/Ac7UebUnwu5-zLt4gN1HlW5KgZhquPJbNhQk2chzdrMjoTPxKJQkxBL5FGAJgp3lCw"></div>
+            <h1 id="titleHeader">Analytics Brazil</h1>
+        </div>
+    </div>
+    <div class="grafico">
+        <canvas id="chartBar" style="height: 100%; width: 100%;"></canvas>
+    </div>
+    <div class="grafico">
+        <canvas id="chartLine" style="height: 100%; width: 100%;"></canvas>
+    </div>
+    <div class="grafico">
+        <canvas id="chartPie" style="height: 100%; width: 100%;"></canvas>
+    </div>
+    <div class="altura"></div>
+    <div class="footer">
+        <p>©2021 — Analytics Brazil - Felipe Camara.</p>
+    </div>
+</body>
+</html>
+<script>
+    var ctx = document.getElementById('chartBar').getContext('2d');
+    var chartBar = new Chart(ctx, {
+
+        type: 'bar',
+        data: {
+            labels: ['2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021'],
+            datasets: [{
+                label: 'Salário mínimo',
+                data: [540, 622, 678, 724, 788, 880, 937, 954, 998, 1045, 1100],
+                backgroundColor: [
+                    'rgba(100, 85, 130, 1)',
+                    'rgba(0, 220, 239, 1)',
+                    'rgba(0, 94, 255, 1)',
+                    'rgba(255, 0, 0, 1)',
+                    'rgba(255, 233, 0, 1)',
+                    'rgba(255, 122, 210, 1)',
+                    'rgba(0, 157, 82, 1)',
+                    'rgba(250, 84, 7, 1)',
+                    'rgba(216, 233, 107, 1)',
+                    'rgba(109, 33, 255, 1)',
+                    'rgba(0, 255, 0, 1)'
+                ],
+                borderColor: [
+                    'rgba(100, 85, 130, 1)',
+                    'rgba(0, 220, 239, 1)',
+                    'rgba(0, 94, 255, 1)',
+                    'rgba(255, 0, 0, 1)',
+                    'rgba(255, 233, 0, 1)',
+                    'rgba(255, 122, 210, 1)',
+                    'rgba(0, 157, 82, 1)',
+                    'rgba(250, 84, 7, 1)',
+                    'rgba(216, 233, 107, 1)',
+                    'rgba(109, 33, 255, 1)',
+                    'rgba(0, 255, 0, 1)'
+                ],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    var ctx = document.getElementById('chartLine').getContext('2d');
+    var chartBar = new Chart(ctx, {
+
+        type: 'line',
+        data: {
+            labels: ['Norte','Nordeste','Sudeste','Sul','Centro-Oeste'],
+            datasets: [{
+                label: 'Média de salário por região',
+                data: [1711, 1539, 2585, 2499, 2498],
+                backgroundColor: [
+                    'rgba(100, 85, 130, 1)',
+                    'rgba(0, 220, 239, 1)',
+                    'rgba(0, 94, 255, 1)',
+                    'rgba(255, 0, 0, 1)',
+                    'rgba(0, 255, 0, 1)'
+                ],
+                borderColor: [
+                    'rgba(0, 0, 0, 0.4)',
+                    'rgba(0, 0, 0, 0.4)',
+                    'rgba(0, 0, 0, 0.4)',
+                    'rgba(0, 0, 0, 0.4)',
+                    'rgba(0, 0, 0, 0.4)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    var ctx = document.getElementById('chartPie').getContext('2d');
+    var chartBar = new Chart(ctx, {
+
+        type: 'pie',
+        data: {
+            labels: ['Brasil(total)','Norte','Nordeste','Sudeste','Sul','Centro-Oeste'],
+            datasets: [{
+                label: 'Desemprego por região',
+                data: [11, 10.9, 13.6, 11.4, 6.8, 9.3],
+                backgroundColor: [
+                    'rgba(100, 85, 130, 1)',
+                    'rgba(0, 220, 239, 1)',
+                    'rgba(0, 94, 255, 1)',
+                    'rgba(255, 0, 0, 1)',
+                    'rgba(0, 255, 0, 1)',
+                    'rgba(0, 92, 156, 1)'
+                ],
+                borderColor: [
+                    'rgba(100, 85, 130, 1)',
+                    'rgba(0, 220, 239, 1)',
+                    'rgba(0, 94, 255, 1)',
+                    'rgba(255, 0, 0, 1)',
+                    'rgba(0, 255, 0, 1)',
+                    'rgba(0, 92, 156, 1)'
+                    
+                ],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+</script>
